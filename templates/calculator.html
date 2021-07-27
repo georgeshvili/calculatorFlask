@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <form method="post" action="{{ url_for('result') }}" id="form">
+        <label for="input1">x:</label>
+        <input type="text" name="input1" id="input1">
+        <br/>
+        <label for="input2">y:</label>
+        <input type="text" name="input2" id="input2">
+        <br/>
+        <label for="operation">Операция</label>
+        <select id="operation" name="operation">
+            <option value="+">Сложение</option>
+            <option value="-">Вычитание</option>
+            <option value="*">Умножение</option>
+            <option value="/">Деление</option>
+            <option value="%">Деление по модулю</option>
+        </select>
+        <br/>
+        <input type="submit" value="Посчитать"/>
+    </form>
+    {% if calculation_success == True %}
+        <br/>
+        <p>The calculation for {{x}} {{operation}} {{y}} is: {{result}}</p>
+    {% endif %}
+    {% if calculation_success == False %}
+        <br/>
+        <p>{{error}}</p>
+    {% endif %}
+</body>
+</html>
